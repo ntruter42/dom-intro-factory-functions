@@ -40,11 +40,15 @@ function BillWithSettings() {
 	}
 
 	function makeCall() {
-		callCostTotal += theCallCost;
+		if (!hasReachedCriticalLevel()) {
+			callCostTotal += theCallCost;
+		}
 	}
 
 	function sendSms() {
-		smsCostTotal += theSmsCost;
+		if (!hasReachedCriticalLevel()) {
+			smsCostTotal += theSmsCost;
+		}
 	}
 
 	function getTotalCost() {
@@ -59,10 +63,18 @@ function BillWithSettings() {
 		return smsCostTotal;
 	}
 
+	function hasReachedWarningLevel() {
+		return getTotalCost() >= getWarningLevel();
+	}
+
+	function hasReachedCriticalLevel() {
+		return getTotalCost() >= getCriticalLevel();
+	}
+
 	function totalClassName() {
-		if (getTotalCost() >= getCriticalLevel()) {
+		if (hasReachedCriticalLevel()) {
 			return "critical";
-		} else if (getTotalCost() >= getWarningLevel()) {
+		} else if (hasReachedWarningLevel()) {
 			return "warning";
 		}
 	}

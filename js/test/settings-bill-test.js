@@ -84,6 +84,7 @@ describe("bill with settings factory functions", function () {
 
 			settingsBill.setCallCost(2.25);
 			settingsBill.setSmsCost(0.85);
+			settingsBill.setCriticalLevel(10);
 
 			settingsBill.makeCall();
 			settingsBill.makeCall();
@@ -99,6 +100,7 @@ describe("bill with settings factory functions", function () {
 
 			settingsBill.setCallCost(1.35);
 			settingsBill.setSmsCost(0.85);
+			settingsBill.setCriticalLevel(10);
 
 			settingsBill.makeCall();
 			settingsBill.makeCall();
@@ -113,6 +115,7 @@ describe("bill with settings factory functions", function () {
 
 			settingsBill.setCallCost(1.35);
 			settingsBill.setSmsCost(0.85);
+			settingsBill.setCriticalLevel(10);
 
 			settingsBill.sendSms();
 			settingsBill.sendSms();
@@ -127,6 +130,7 @@ describe("bill with settings factory functions", function () {
 
 			settingsBill.setCallCost(1.35);
 			settingsBill.setSmsCost(0.85);
+			settingsBill.setCriticalLevel(10);
 
 			settingsBill.sendSms();
 			settingsBill.makeCall();
@@ -169,6 +173,24 @@ describe("bill with settings factory functions", function () {
 			settingsBill.makeCall();
 
 			assert.equal("critical", settingsBill.totalClassName());
+		});
+
+		it("should stop total call cost from increasing when critical level is reached", function () {
+			let settingsBill = BillWithSettings();
+
+			settingsBill.setCallCost(2.50);
+			settingsBill.setSmsCost(0.85);
+			settingsBill.setWarningLevel(5);
+			settingsBill.setCriticalLevel(10);
+
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+
+			assert.equal("critical", settingsBill.totalClassName());
+			assert.equal(10, settingsBill.getTotalCallCost());
 		});
 	});
 });
