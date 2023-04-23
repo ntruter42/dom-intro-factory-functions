@@ -192,5 +192,32 @@ describe("bill with settings factory functions", function () {
 			assert.equal("critical", settingsBill.totalClassName());
 			assert.equal(10, settingsBill.getTotalCallCost());
 		});
+
+		it("should allow the total to increase after updating the critical level greater than total", function () {
+			let settingsBill = BillWithSettings();
+
+			settingsBill.setCallCost(2.50);
+			settingsBill.setSmsCost(0.85);
+			settingsBill.setWarningLevel(8);
+			settingsBill.setCriticalLevel(10);
+
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+
+			assert.equal("critical", settingsBill.totalClassName());
+			assert.equal(10, settingsBill.getTotalCallCost());
+
+			settingsBill.setCriticalLevel(20);
+
+			assert.equal("warning", settingsBill.totalClassName());
+
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+
+			assert.equal(15, settingsBill.getTotalCallCost());
+		});
 	});
 });
