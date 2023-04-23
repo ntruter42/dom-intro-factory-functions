@@ -78,7 +78,7 @@ describe("bill with settings factory functions", function () {
 		});
 	});
 
-	describe("set values", function () {
+	describe("use values", function () {
 		it("should be able to use the call cost set", function () {
 			let settingsBill = BillWithSettings();
 
@@ -138,4 +138,37 @@ describe("bill with settings factory functions", function () {
 		});
 	});
 
+	describe("warning and critical levels", function () {
+		it("should return a class name of 'warning' if warning level is reached", function () {
+			let settingsBill = BillWithSettings();
+
+			settingsBill.setCallCost(1.35);
+			settingsBill.setSmsCost(0.85);
+			settingsBill.setWarningLevel(5);
+			settingsBill.setCriticalLevel(10);
+
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+
+			assert.equal("warning", settingsBill.totalClassName());
+		});
+
+		it("should return a class name of 'critical' if critical level is reached", function () {
+			let settingsBill = BillWithSettings();
+
+			settingsBill.setCallCost(2.50);
+			settingsBill.setSmsCost(0.85);
+			settingsBill.setWarningLevel(5);
+			settingsBill.setCriticalLevel(10);
+
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+
+			assert.equal("critical", settingsBill.totalClassName());
+		});
+	});
 });
