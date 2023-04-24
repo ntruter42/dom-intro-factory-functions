@@ -125,7 +125,7 @@ describe("bill with settings factory functions", function () {
 			assert.equal(0.85 * 2, settingsBill.getTotalSmsCost());
 		});
 
-		it("should be able to send 2 sms' at 0.85 each and make 1 at 1.35", function () {
+		it("should be able to send 2 sms' at 0.85 each and make 1 call at 1.35", function () {
 			let settingsBill = BillWithSettings();
 
 			settingsBill.setCallCost(1.35);

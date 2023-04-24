@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Phone Bill Unit Tests</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.css"
 		integrity="sha512-K2SeadvFVe9lYFodeleJaoA3p2Kna1reHWkNJ3GWMint1X7cXdU7oJpe2TTkRZ65DCWp2kyxM8RNnEPstlWr4A=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,16 +21,22 @@
 	<h1>Phone Bill Unit Tests</h1>
 
 	<div id="mocha">
-		<!-- set up mocha and chai asserts -->
+		<!-- set up mochajs and chai asserts -->
 		<script>
 			mocha.setup('bdd');
 			var assert = chai.assert;
 		</script>
 
-		<!-- import function scripts -->
+		<!-- function scripts -->
+		<script src="js/calculate-bill.js" charset="utf-8"></script>
+		<!-- <script src="js/text-bill.js" charset="utf-8"></script> -->
+		<!-- <script src="js/radio-bill.js" charset="utf-8"></script> -->
 		<script src="js/settings-bill.js" charset="utf-8"></script>
 
-		<!-- import test scripts -->
+		<!-- test scripts -->
+		<script src="js/test/calculate-bill-test.js" charset="utf-8"></script>
+		<!-- <script src="js/test/text-bill-test.js" charset="utf-8"></script> -->
+		<!-- <script src="js/test/radio-bill-test.js" charset="utf-8"></script> -->
 		<script src="js/test/settings-bill-test.js" charset="utf-8"></script>
 
 		<!-- run mocha tests -->
