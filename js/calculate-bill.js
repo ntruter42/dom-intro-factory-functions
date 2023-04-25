@@ -1,6 +1,6 @@
-function calculateBillWidget() {
-	var totalCost = 0;
-	var billString = "";
+function CalculateBill() {
+	let totalCost = 0;
+	let billString = "";
 
 	function setTotalCost(inputString) {
 		totalCost = 0;

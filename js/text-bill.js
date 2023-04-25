@@ -1,97 +1,50 @@
-// INPUT ELEMENTS
-const textString = document.querySelector("#text-string");
-const textButton = document.querySelector("#text-button");
-const textReset = document.querySelector("#text-reset");
+function TextInputBill() {
+	let callTotalCost = 0;
+	let smsTotalCost = 0;
+	let billString = "";
 
-// OUTPUT ELEMENTS
-const textCallTotal = document.querySelector("#text-call-total");
-const textSmsTotal = document.querySelector("#text-sms-total");
-const textTotal = document.querySelector("#text-total");
-
-// TOTALS VARIABLES
-let callTextTotal = 0;
-let smsTextTotal = 0;
-
-function textValidation() {
-	const textInput = textString.value.trim().toLowerCase();
-	const success = "success-input";
-	const warning = "warning-input";
-	const error = "error-input";
-
-	switch (textInput) {
-		case "":
-			textString.classList.remove(success, warning, error);
-			break;
-		case "call":
-		case "sms":
-			textString.classList.remove(warning, error);
-			textString.classList.add(success);
-			break;
-		case "c":
-		case "ca":
-		case "cal":
-		case "s":
-		case "sm":
-			textString.classList.remove(success, error);
-			textString.classList.add(warning);
-			break;
-		default:
-			textString.classList.remove(success, warning);
-			textString.classList.add(error);
-			break;
+	function addCost(inputString) {
+		billString = inputString.trim().toLowerCase();
+		if (billString === "call") {
+			callTotalCost += 2.75;
+		} else if (billString === "sms") {
+			smsTotalCost += 0.75;
+		}
 	}
+
+	function getTotalCallCost() {
+		return callTotalCost;
+	}
+
+	function getTotalSmsCost() {
+		return smsTotalCost;
+	}
+
+	function getTotalCost() {
+		return callTotalCost + smsTotalCost;
+	}
+
+	function hasReachedWarningLevel() {
+		return getTotalCost() >= 30;
+	}
+
+	function hasReachedCriticalLevel() {
+		return getTotalCost() >= 50;
+	}
+
+	function totalClassName() {
+		if (hasReachedCriticalLevel()) {
+			return "critical";
+		} else if (hasReachedWarningLevel()) {
+			return "warning";
+		}
+	}
+
+	return {
+		addCost,
+		getTotalCallCost,
+		getTotalSmsCost,
+		getTotalCost,
+		totalClassName
+	};
 }
-document.addEventListener('DOMContentLoaded', () => {
-	textString.addEventListener('input', textValidation);
-});
-
-function textButtonClicked() {
-	const textItem = textString.value.trim().toLowerCase();
-
-	if (textItem === 'call') {
-		callTextTotal += 2.75;
-	} else if (textItem === 'sms') {
-		smsTextTotal += 0.75;
-	} else if (textItem === "") {
-		message.type = "error";
-		message.text = "String can't be empty.";
-	} else {
-		message.type = "error";
-		message.text = "Expected 'call' or 'sms'.";
-	}
-	const total = callTextTotal + smsTextTotal;
-
-	textTotal.classList.remove("warning", "danger");
-	if (total > 50) {
-		textTotal.classList.add("danger");
-	} else if (total > 30) {
-		textTotal.classList.add("warning");
-	}
-
-	textCallTotal.innerHTML = "R" + callTextTotal.toFixed(2);
-	textSmsTotal.innerHTML = "R" + smsTextTotal.toFixed(2);
-	textTotal.innerHTML = "R" + total.toFixed(2);
-	textString.focus();
-
-	if (message.type !== null) {
-		message.widget = "text-message";
-		displayMessage(message);
-	}
-}
-textButton.addEventListener('click', textButtonClicked);
-
-function resetTextTotals() {
-	callTextTotal = 0;
-	smsTextTotal = 0;
-	textCallTotal.innerHTML = "R0.00";
-	textSmsTotal.innerHTML = "R0.00";
-	textTotal.innerHTML = "R0.00";
-	textTotal.classList.remove("warning", "danger");
-	textString.focus();
-
-	message.type = "success";
-	message.text = "Totals have been reset.";
-	message.widget = "text-message";
-	displayMessage(message);
-}
-textReset.addEventListener('click', resetTextTotals);
