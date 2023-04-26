@@ -1,0 +1,209 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #eee;
+}
+
+button {
+	border-radius: 4px;
+	background-color: #fff;
+	border: 1px solid #aaa;
+	box-shadow: 1px 1px;
+}
+
+button:hover {
+	background-color: #eee;
+	box-shadow: 2px 2px 2px #000;
+}
+
+button:active {
+	box-shadow: 1px 1px #888;
+}
+
+button:focus:not(:active) {
+	box-shadow: 2px 2px 2px #000;
+}
+
+.add-button,
+.update-button {
+	/* background-image: linear-gradient(45deg, #caf, #fac) !important;
+	color: #fff !important; */
+	text-shadow: none;
+}
+
+.reset-button {
+	background-color: #ccc;
+}
+
+textarea,
+input {
+	border: none;
+	outline: 1px solid #ccc;
+	box-shadow: 2px 2px 2px;
+}
+
+textarea:focus,
+input:focus {
+	box-shadow: 1px 1px 1px;
+}
+
+code {
+	border-radius: 4px;
+	background-color: #fffc;
+	outline: 1px solid #ddd;
+	margin-left: 2px;
+	padding-right: 4px;
+}
+
+.bill-widget {
+	/* background-image: linear-gradient(-35deg, #fa02, #40f2); */
+	outline: 1px solid #0004;
+	border-radius: 8px;
+	box-shadow: 2px 2px;
+}
+
+.textarea-container {
+	position: relative;
+	display: inline-block;
+}
+
+#calculate-string {
+	overflow: hidden;
+	resize: none;
+}
+
+.select-box {
+	outline: 1px solid #0004;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 1px 1px;
+}
+
+.message-box {
+	outline: 1px solid #bbb;
+	background-color: #ddd;
+	border-radius: 4px;
+	text-align: center;
+	text-shadow: 1px 1px 2px #fff;
+}
+
+.success-message {
+	outline: 1px solid #0d0;
+	background-color: #0d04;
+}
+
+.warning-message {
+	outline: 1px solid #fc0;
+	background-color: #fc04;
+}
+
+.error-message {
+	outline: 1px solid #f00;
+	background-color: #f004;
+}
+
+.success-input {
+	background-color: #0d04 !important;
+}
+
+.warning-input {
+	background-color: #fc04 !important;
+}
+
+.error-input {
+	background-color: #f004 !important;
+}
+
+input[type=radio] {
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+
+.big {
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.warning {
+	color: #fa0 !important;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.danger {
+	color: #d00 !important;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.widget-selected {
+	background-color: #fff !important;
+	outline: 1px solid #000f !important;
+	box-shadow: inset 1px 1px !important;
+}
+
+.hidden-spaceholder {
+	visibility: hidden !important;
+}
+
+hr {
+	border-width: 0;
+	border-top: 2px solid #fff;
+}
+
+/* ANIMATIONS */
+.fade-out {
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.scale {
+	transform: scale(1);
+	transition: transform 0.4s ease-out;
+}
+
+.scale-out {
+	transform: scale(0);
+	transition: transform 0.4s ease-out;
+}
+
+/* OUTLINES */
+/*
+.row {
+	outline: 2px solid blue !important;
+}
+
+.col-1-sm,
+.col-2-sm,
+.col-3-sm,
+.col-4-sm,
+.col-5-sm,
+.col-6-sm,
+.col-7-sm,
+.col-8-sm,
+.col-9-sm,
+.col-10-sm,
+.col-11-sm,
+.col-12-sm {
+	outline: 1px solid magenta !important;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+	outline: 1px solid cyan !important;
+}

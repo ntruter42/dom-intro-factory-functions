@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
+:root {
+	--bg-color: #000;
+	--bg1-color: #111;
+	--bg2-color: #222;
+	--bg3-color: #444;
+	--bg4-color: #888;
+	--txt-color: #fff;
+	--accent-color: #0ff;
+}
+
+* {
+	font-family: 'Segoe UI', sans-serif;
+	color: var(--txt-color) !important;
+}
+
+body {
+	font-family: 'Lato', 'Segoe UI', sans-serif;
+	background-color: var(--bg1-color) !important;
+}
+
+#test-heading {
+	font-size: 2em;
+}
+
+#widget-link {
+	margin-left: 10px;
+	color: var(--txt-color);
+	text-shadow: 2px 2px var(--bg-color);
+	text-decoration: none;
+	outline: 1px solid;
+	padding-inline: 5px;
+	border-radius: 0px 0px 10px 10px;
+}
+
+#mocha {
+	outline: 1px solid var(--bg4-color);
+	padding: 10px 20px 30px 15px;
+	border-radius: 10px;
+}
+
+#mocha h1 {
+	background-image: linear-gradient(90deg, var(--bg2-color), var(--bg2-color));
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	margin-left: -10px;
+	margin-bottom: 10px;
+}
+
+#mocha h2 {
+	color: var(--txt-color);
+}
+
+#mocha .test.pass::before {
+	color: var(--accent-color);
+}
+
+#mocha-stats {
+	background-image: linear-gradient(90deg, #0000, #0000, var(--bg2-color));
+	border-radius: 100px 100px 100px 100px;
+	padding-top: 4px !important;
+	padding-left: 12px !important;
+}
+
+#mocha-stats:hover {
+	background-image: linear-gradient(90deg, var(--bg2-color), var(--bg2-color), var(--bg2-color));
+	padding-top: 4px !important;
+	padding-left: 12px !important;
+}
+
+#mocha .progress canvas {
+	background-color: var(--bg3-color);
+	border-radius: 100px;
+}
+
+#mocha #mocha-stats:hover .progress canvas {
+	background-color: var(--bg2-color);
+}
+
+.suite li {
+	border-radius: 10px;
+	padding-bottom: 3px !important;
+	margin-bottom: 4px !important;
+}
+
+#mocha .test pre {
+	border: none;
+	outline: 1px solid var(--bg4-color);
+	box-shadow: none;
+}
+
+#mocha .test a.replay {
+	background-color: #0000;
+	box-shadow: none;
+	transform: scale(1.5);
+}
+
+#mocha .test:hover a.replay {
+	box-shadow: none;
+	transform: rotate(90deg) scale(1.5) translateX(2px) translateY(-1px) ;
+	color: var(--accent-color) !important;
+}
