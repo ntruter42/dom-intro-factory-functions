@@ -7,6 +7,8 @@ function BillWithSettings() {
 	let callCostTotal = 0;
 	let smsCostTotal = 0;
 
+	let checkedValue = "";
+
 	function setCallCost(callCost) {
 		theCallCost = callCost;
 	}
@@ -37,6 +39,22 @@ function BillWithSettings() {
 
 	function getCriticalLevel() {
 		return theCriticalLevel;
+	}
+
+	function setCheckedValue(value) {
+		checkedValue = value;
+	}
+
+	function callSelected() {
+		if (checkedValue === "call")
+			return true;
+		return false;
+	}
+
+	function smsSelected() {
+		if (checkedValue === "sms")
+			return true;
+		return false;
 	}
 
 	function makeCall() {
@@ -93,6 +111,9 @@ function BillWithSettings() {
 		getWarningLevel,
 		setCriticalLevel,
 		getCriticalLevel,
+		setCheckedValue,
+		callSelected,
+		smsSelected,
 		makeCall,
 		sendSms,
 		getTotalCost,

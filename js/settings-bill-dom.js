@@ -20,6 +20,22 @@ const settingsBill = BillWithSettings();
 // ADD BUTTON
 function settingsButtonClicked() {
 	const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked");
+	settingsBill.setCallCost(2.75);
+	settingsBill.setSmsCost(0.75);
+	settingsBill.setWarningLevel(20);
+	settingsBill.setCriticalLevel(30);
+
+	if (settingsChecked) {
+		settingsBill.setCheckedValue(settingsChecked.value);
+
+		if (settingsBill.callSelected()) {
+			settingsBill.makeCall();
+		} else if (settingsBill.smsSelected()) {
+			settingsBill.sendSms();
+		}
+	} else {
+		console.log("Nothing selected");
+	}
 }
 settingsButton.addEventListener('click', settingsButtonClicked);
 
@@ -34,3 +50,4 @@ function updateSettingsValues() {
 	//
 }
 settingsUpdate.addEventListener('click', updateSettingsValues);
+
