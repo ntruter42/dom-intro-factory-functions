@@ -88,6 +88,23 @@ describe("text input bill factory functions", function () {
 			assert.equal(8.25, textInputBill2.getTotalCallCost());
 			assert.equal(1.50, textInputBill2.getTotalSmsCost());
 		});
+
+		it("should be able to reset totals", function () {
+			let textInputBill = TextInputBill();
+
+			textInputBill.addCost("call");
+			textInputBill.addCost("sms");
+
+			assert.equal(3.50, textInputBill.getTotalCost());
+			assert.equal(2.75, textInputBill.getTotalCallCost());
+			assert.equal(0.75, textInputBill.getTotalSmsCost());
+
+			textInputBill.resetTotals();
+
+			assert.equal(0, textInputBill.getTotalCost());
+			assert.equal(0, textInputBill.getTotalCallCost());
+			assert.equal(0, textInputBill.getTotalSmsCost());
+		});
 	});
 
 	describe("warning and critical levels", function () {

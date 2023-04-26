@@ -140,6 +140,28 @@ describe("bill with settings factory functions", function () {
 			assert.equal(1.35, settingsBill.getTotalCallCost());
 			assert.equal(0.85 * 2, settingsBill.getTotalSmsCost());
 		});
+
+		it("should be able to reset totals", function () {
+			let settingsBill = BillWithSettings();
+
+			settingsBill.setCallCost(1.35);
+			settingsBill.setSmsCost(0.85);
+			settingsBill.setCriticalLevel(10);
+
+			settingsBill.sendSms();
+			settingsBill.makeCall();
+			settingsBill.sendSms();
+
+			assert.equal(0.85 * 2 + 1.35, settingsBill.getTotalCost());
+			assert.equal(1.35, settingsBill.getTotalCallCost());
+			assert.equal(0.85 * 2, settingsBill.getTotalSmsCost());
+
+			settingsBill.resetTotals();
+
+			assert.equal(0, settingsBill.getTotalCost());
+			assert.equal(0, settingsBill.getTotalCallCost());
+			assert.equal(0, settingsBill.getTotalSmsCost());
+		});
 	});
 
 	describe("warning and critical levels", function () {

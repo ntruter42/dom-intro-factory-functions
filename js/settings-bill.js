@@ -14,7 +14,7 @@ function BillWithSettings() {
 	function getCallCost() {
 		return theCallCost;
 	}
-
+	
 	function setSmsCost(smsCost) {
 		theSmsCost = smsCost;
 	}
@@ -79,6 +79,11 @@ function BillWithSettings() {
 		}
 	}
 
+	function resetTotals() {
+		callCostTotal = 0;
+		smsCostTotal = 0;
+	}
+
 	return {
 		setCallCost,
 		getCallCost,
@@ -93,6 +98,7 @@ function BillWithSettings() {
 		getTotalCost,
 		getTotalCallCost,
 		getTotalSmsCost,
-		totalClassName
-	}
+		totalClassName,
+		resetTotals
+	};
 }

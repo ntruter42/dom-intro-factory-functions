@@ -40,11 +40,17 @@ function TextInputBill() {
 		}
 	}
 
+	function resetTotals() {
+		callTotalCost = 0;
+		smsTotalCost= 0;
+	}
+
 	return {
 		addCost,
 		getTotalCallCost,
 		getTotalSmsCost,
 		getTotalCost,
-		totalClassName
+		totalClassName,
+		resetTotals
 	};
 }

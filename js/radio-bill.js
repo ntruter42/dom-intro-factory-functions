@@ -38,12 +38,18 @@ function RadioBill() {
 		}
 	}
 
+	function resetTotals() {
+		callCostTotal = 0;
+		smsCostTotal = 0;
+	}
+
 	return {
 		makeCall,
 		sendSms,
 		getTotalCallCost,
 		getTotalSmsCost,
 		getTotalCost,
-		totalClassName
-	}
+		totalClassName,
+		resetTotals
+	};
 }

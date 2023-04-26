@@ -34,9 +34,14 @@ function CalculateBill() {
 		}
 	}
 
+	function resetTotals() {
+		totalCost = 0;
+	}
+
 	return {
 		setTotalCost,
 		getTotalCost,
-		totalClassName
+		totalClassName,
+		resetTotals
 	};
 }

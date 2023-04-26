@@ -47,6 +47,23 @@ describe("radio bill factory functions", function () {
 			assert.equal(2.25, radioBill2.getTotalSmsCost());
 			assert.equal(7.75, radioBill2.getTotalCost());
 		});
+
+		it("should be able to reset totals", function () {
+			let radioBill = RadioBill();
+
+			radioBill.makeCall();
+			radioBill.sendSms();
+
+			assert.equal(2.75, radioBill.getTotalCallCost());
+			assert.equal(0.75, radioBill.getTotalSmsCost());
+			assert.equal(3.50, radioBill.getTotalCost());
+
+			radioBill.resetTotals();
+
+			assert.equal(0, radioBill.getTotalCallCost());
+			assert.equal(0, radioBill.getTotalSmsCost());
+			assert.equal(0, radioBill.getTotalCost());
+		});
 	});
 
 	describe("warning and critical levels", function () {

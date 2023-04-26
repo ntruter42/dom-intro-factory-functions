@@ -30,6 +30,18 @@ describe("calculate bill factory functions", function () {
 			calculateBill2.setTotalCost("call,sms,call,call,call,call,sms");
 			assert.equal((2.75 * 5) + (0.75 * 2), calculateBill2.getTotalCost());
 		});
+
+		it("should be able to reset totals", function () {
+			let calculateBill = CalculateBill();
+
+			calculateBill.setTotalCost("call,sms,call,sms");
+			
+			assert.equal((2.75 * 2) + (0.75 * 2), calculateBill.getTotalCost());
+
+			calculateBill.resetTotals();
+
+			assert.equal(0, calculateBill.getTotalCost());
+		});
 	});
 
 	describe("warning and critical levels", function () {
