@@ -14,7 +14,7 @@ function BillWithSettings() {
 	}
 
 	function getCallCost() {
-		return theCallCost.toFixed(2);
+		return theCallCost;
 	}
 	
 	function setSmsCost(smsCost) {
@@ -22,7 +22,7 @@ function BillWithSettings() {
 	}
 
 	function getSmsCost() {
-		return theSmsCost.toFixed(2);
+		return theSmsCost;
 	}
 
 	function setWarningLevel(warningLevel) {
@@ -45,14 +45,18 @@ function BillWithSettings() {
 		checkedValue = value;
 	}
 
-	function callSelected() {
-		if (checkedValue === "call")
+	function getCheckedValue() {
+		return checkedValue;
+	}
+
+	function callChecked() {
+		if (getCheckedValue() === "call")
 			return true;
 		return false;
 	}
 
-	function smsSelected() {
-		if (checkedValue === "sms")
+	function smsChecked() {
+		if (getCheckedValue() === "sms")
 			return true;
 		return false;
 	}
@@ -70,15 +74,15 @@ function BillWithSettings() {
 	}
 
 	function getTotalCost() {
-		return (callCostTotal + smsCostTotal).toFixed(2);
+		return callCostTotal + smsCostTotal;
 	}
 
 	function getTotalCallCost() {
-		return callCostTotal.toFixed(2);
+		return callCostTotal;
 	}
 
 	function getTotalSmsCost() {
-		return smsCostTotal.toFixed(2);
+		return smsCostTotal;
 	}
 
 	function hasReachedWarningLevel() {
@@ -112,8 +116,8 @@ function BillWithSettings() {
 		setCriticalLevel,
 		getCriticalLevel,
 		setCheckedValue,
-		callSelected,
-		smsSelected,
+		callChecked,
+		smsChecked,
 		makeCall,
 		sendSms,
 		getTotalCost,

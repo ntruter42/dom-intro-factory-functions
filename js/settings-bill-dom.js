@@ -14,25 +14,31 @@ const settingsCallTotal = document.querySelector("#settings-call-total");
 const settingsSmsTotal = document.querySelector("#settings-sms-total");
 const settingsTotal = document.querySelector("#settings-total");
 
-// FACTORY FUNCTIONS INSTANCE
+// SETTINGS INSTANCE
 const settingsBill = BillWithSettings();
 
 // ADD BUTTON
 function settingsButtonClicked() {
 	const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked");
 
-	if (settingsChecked) {
+	if (settingsBill.getCallCost() <= 0 ||
+		settingsBill.getSmsCost() <= 0 ||
+		settingsBill.getWarningLevel() <= 0 ||
+		settingsBill.getCriticalLevel() <= 0) {
+		console.log("Settings can't be 0");
+	} else if (settingsChecked) {
 		settingsBill.setCheckedValue(settingsChecked.value);
 
-		if (settingsBill.callSelected()) {
+		if (settingsBill.callChecked()) {
 			settingsBill.makeCall();
-			settingsCallTotal.innerHTML = "R" + settingsBill.getTotalCallCost();
-		} else if (settingsBill.smsSelected()) {
+		} else if (settingsBill.smsChecked()) {
 			settingsBill.sendSms();
-			settingsSmsTotal.innerHTML = "R" + settingsBill.getTotalSmsCost();
 		}
+		console.log(settingsBill.getTotalCost());
 
-		settingsTotal.innerHTML = "R" + settingsBill.getTotalCost();
+		settingsCallTotal.innerHTML = "R" + settingsBill.getTotalCallCost().toFixed(2);
+		settingsSmsTotal.innerHTML = "R" + settingsBill.getTotalSmsCost().toFixed(2);
+		settingsTotal.innerHTML = "R" + settingsBill.getTotalCost().toFixed(2);
 	} else {
 		console.log("Nothing selected");
 	}
@@ -41,29 +47,33 @@ settingsButton.addEventListener('click', settingsButtonClicked);
 
 // RESET BUTTON
 function resetSettingsTotals() {
-	//
+	settingsBill.resetTotals();
+
+	settingsCallTotal.innerHTML = "R" + settingsBill.getTotalCallCost().toFixed(2);
+	settingsSmsTotal.innerHTML = "R" + settingsBill.getTotalSmsCost().toFixed(2);
+	settingsTotal.innerHTML = "R" + settingsBill.getTotalCost().toFixed(2);
 }
 settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
 function updateSettingsValues() {
-	if (settingsCallCost.value === "") {
-		settingsCallCost.value = 2.75;
+	if (settingsCallCost.value === "" || Number(settingsCallCost.value) <= 0) {
+		settingsCallCost.value = settingsBill.getCallCost();
 	}
 	settingsBill.setCallCost(Number(settingsCallCost.value));
 
-	if (settingsSmsCost.value === "") {
-		settingsSmsCost.value = 0.75;
+	if (settingsSmsCost.value === "" || Number(settingsSmsCost.value) <= 0) {
+		settingsSmsCost.value = settingsBill.getSmsCost();
 	}
 	settingsBill.setSmsCost(Number(settingsSmsCost.value));
 
-	if (settingsWarningLevel.value === "") {
-		settingsWarningLevel.value = 30;
+	if (settingsWarningLevel.value === "" || Number(settingsWarningLevel.value) <= 0) {
+		settingsWarningLevel.value = settingsBill.getWarningLevel();
 	}
 	settingsBill.setWarningLevel(Number(settingsWarningLevel.value));
 
-	if (settingsCriticalLevel.value === "") {
-		settingsCriticalLevel.value = 50;
+	if (settingsCriticalLevel.value === "" || Number(settingsCriticalLevel.value) <= 0) {
+		settingsCriticalLevel.value = settingsBill.getCriticalLevel();
 	}
 	settingsBill.setCriticalLevel(Number(settingsCriticalLevel.value));
 }
