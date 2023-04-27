@@ -6,6 +6,30 @@ body {
 	background-color: #eee;
 }
 
+nav ul {
+	display: flex;
+	flex-direction: row;
+	padding-left: 0;
+	justify-content: space-evenly;
+	list-style: none;
+}
+
+nav li {
+	background-color: #ddd;
+	box-shadow: 1px 1px, 2px 2px;
+	outline: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0 5px 0 5px;
+}
+
+nav li:active {
+	box-shadow: inset 1px 1px;
+}
+
+nav a {
+	text-decoration: none;
+}
+
 button {
 	border-radius: 4px;
 	background-color: #fff;

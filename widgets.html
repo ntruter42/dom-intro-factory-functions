@@ -12,6 +12,14 @@
 </head>
 
 <body>
+	<nav>
+		<ul>
+			<li><a href="#calculate-widget">Calculate Bill</a></li>
+			<li><a href="#text-widget">Text Input Bill</a></li>
+			<li><a href="#radio-widget">Radio Button Bill</a></li>
+			<li><a href="#settings-widget">Settings Bill</a></li>
+		</ul>
+	</nav>
 	<div class="container">
 		<div class="row">
 
@@ -79,6 +87,11 @@
 
 					<hr>
 
+					<!-- messages -->
+					<div class="col-12-sm message-box hidden-sm">
+						<span class="col-12-sm" id="calculate-message"></span>
+					</div>
+
 					<!-- input elements -->
 					<h5 class="col-12-sm">Bill string</h5>
 					<textarea class="col-12-sm auto-grow-input" id="calculate-string" rows="2" name="name"
@@ -92,11 +105,6 @@
 					<div class="col-12-sm">
 						<span class="col-3-sm col-5">Total amount:</span>
 						<span class="big" id="calculate-total">R0.00</span>
-					</div>
-
-					<!-- messages -->
-					<div class="col-12-sm message-box hidden-sm">
-						<span class="col-12-sm" id="calculate-message"></span>
 					</div>
 				</div>
 			</div>
@@ -129,6 +137,11 @@
 
 					<hr>
 
+					<!-- messages -->
+					<div class="col-12-sm message-box hidden-sm">
+						<span class="col-12-sm" id="text-message"></span>
+					</div>
+
 					<!-- input elements -->
 					<h5 class="col-12-sm">Bill type</h5>
 					<input class="col-6-sm" id="text-string" type="text" name="" value=""
@@ -149,11 +162,6 @@
 					<div class="col-12-sm">
 						<span class="col-3-sm col-5">Total amount:</span>
 						<span class="big" id="text-total">R0.00</span>
-					</div>
-
-					<!-- messages -->
-					<div class="col-12-sm message-box hidden-sm">
-						<span class="col-12-sm" id="text-message"></span>
 					</div>
 				</div>
 			</div>
@@ -187,16 +195,25 @@
 
 					<hr>
 
+					<!-- messages -->
+					<div class="col-12-sm message-box hidden-sm">
+						<span class="col-12-sm" id="radio-message"></span>
+					</div>
+
 					<!-- input elements -->
 					<h5 class="col-12-sm">Bill type</h5>
 					<div class="col-6-sm select-box">
 						<div class="col-12-sm">
-							<input id="radio-call" type="radio" name="radio-bill-item" value="call">
-							<span>Call</span>
+							<label for="radio-call">
+								<input id="radio-call" type="radio" name="radio-bill-item" value="call">
+								<span>Call</span>
+							</label>
 						</div>
 						<div class="col-12-sm">
-							<input id="radio-sms" type="radio" name="radio-bill-item" value="sms">
-							<span class="">SMS</span>
+							<label for="radio-sms">
+								<input id="radio-sms" type="radio" name="radio-bill-item" value="sms">
+								<span class="">SMS</span>
+							</label>
 						</div>
 					</div>
 					<div class="col-6-sm">
@@ -218,11 +235,6 @@
 					<div class="col-12-sm">
 						<span class="col-3-sm col-5">Total amount:</span>
 						<span class="big" id="radio-total">R0.00</span>
-					</div>
-
-					<!-- messages -->
-					<div class="col-12-sm message-box hidden-sm">
-						<span class="col-12-sm" id="radio-message"></span>
 					</div>
 				</div>
 			</div>
@@ -250,17 +262,26 @@
 
 					<hr>
 
+					<!-- messages -->
+					<div class="col-12-sm message-box hidden-sm">
+						<span class="col-12-sm" id="settings-message"></span>
+					</div>
+
 					<!-- input elements -->
 					<div class="col-6-sm">
 						<h5 class="col-12-sm">Bill type</h5>
 						<div class="col-12-sm select-box">
 							<div class="col-12-sm">
-								<input id="settings-call" type="radio" name="settings-bill-item" value="call">
-								<span>Call</span>
+								<label for="settings-call">
+									<input id="settings-call" type="radio" name="settings-bill-item" value="call">
+									<span for="settings-call">Call</span>
+								</label>
 							</div>
 							<div class="col-12-sm">
-								<input id="settings-sms" type="radio" name="settings-bill-item" value="sms">
-								<span>SMS</span>
+								<label for="settings-sms">
+									<input id="settings-sms" type="radio" name="settings-bill-item" value="sms">
+									<span>SMS</span>
+								</label>
 							</div>
 						</div>
 						<div class="col-12-sm">
@@ -280,6 +301,7 @@
 							<span class="col-6-sm col-8">SMS total:</span>
 							<span class="col-6-sm bold" id="settings-sms-total">R0.00</span>
 						</div>
+						<!-- to be continued -->
 					</div>
 
 					<!-- settings elements -->
@@ -303,27 +325,20 @@
 						</div>
 						<button class="col-12-sm update-button" id="settings-update" type="button"
 							name="button">Update</button>
+
+						<!-- output elements continued -->
 						<div class="col-12-sm">
 							<span class="col-6-sm col-10">Total amount:</span>
 							<span class="big" id="settings-total">R0.00</span>
 						</div>
 					</div>
-
-					<!-- messages -->
-					<div class="col-12-sm message-box hidden-sm">
-						<span class="col-12-sm" id="settings-message"></span>
-					</div>
 				</div>
-			</div>
-			<!-- messages -->
-			<div class="col-12-sm hidden-spaceholder message-box">
-				<span class="col-12-sm" id="hidden-message">Hidden</span>
 			</div>
 		</div>
 	</div>
 
 	<!-- GENERAL FUNCTIONS -->
-	<!-- <script src="js/messages.js" charset="utf-8"></script> -->
+	<!-- <script src="js/functionality/messages.js" charset="utf-8"></script> -->
 	<script src="js/functionality/highlight-widget.js" charset="utf-8"></script>
 	<script src="js/functionality/auto-grow-input.js" charset="utf-8"></script>
 

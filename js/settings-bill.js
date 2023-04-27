@@ -14,7 +14,7 @@ function BillWithSettings() {
 	}
 
 	function getCallCost() {
-		return theCallCost;
+		return theCallCost.toFixed(2);
 	}
 	
 	function setSmsCost(smsCost) {
@@ -22,7 +22,7 @@ function BillWithSettings() {
 	}
 
 	function getSmsCost() {
-		return theSmsCost;
+		return theSmsCost.toFixed(2);
 	}
 
 	function setWarningLevel(warningLevel) {
@@ -70,15 +70,15 @@ function BillWithSettings() {
 	}
 
 	function getTotalCost() {
-		return callCostTotal + smsCostTotal;
+		return (callCostTotal + smsCostTotal).toFixed(2);
 	}
 
 	function getTotalCallCost() {
-		return callCostTotal;
+		return callCostTotal.toFixed(2);
 	}
 
 	function getTotalSmsCost() {
-		return smsCostTotal;
+		return smsCostTotal.toFixed(2);
 	}
 
 	function hasReachedWarningLevel() {

@@ -20,19 +20,19 @@ const settingsBill = BillWithSettings();
 // ADD BUTTON
 function settingsButtonClicked() {
 	const settingsChecked = document.querySelector("input[name='settings-bill-item']:checked");
-	settingsBill.setCallCost(2.75);
-	settingsBill.setSmsCost(0.75);
-	settingsBill.setWarningLevel(20);
-	settingsBill.setCriticalLevel(30);
 
 	if (settingsChecked) {
 		settingsBill.setCheckedValue(settingsChecked.value);
 
 		if (settingsBill.callSelected()) {
 			settingsBill.makeCall();
+			settingsCallTotal.innerHTML = "R" + settingsBill.getTotalCallCost();
 		} else if (settingsBill.smsSelected()) {
 			settingsBill.sendSms();
+			settingsSmsTotal.innerHTML = "R" + settingsBill.getTotalSmsCost();
 		}
+
+		settingsTotal.innerHTML = "R" + settingsBill.getTotalCost();
 	} else {
 		console.log("Nothing selected");
 	}
@@ -47,7 +47,25 @@ settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
 function updateSettingsValues() {
-	//
+	if (settingsCallCost.value === "") {
+		settingsCallCost.value = 2.75;
+	}
+	settingsBill.setCallCost(Number(settingsCallCost.value));
+
+	if (settingsSmsCost.value === "") {
+		settingsSmsCost.value = 0.75;
+	}
+	settingsBill.setSmsCost(Number(settingsSmsCost.value));
+
+	if (settingsWarningLevel.value === "") {
+		settingsWarningLevel.value = 30;
+	}
+	settingsBill.setWarningLevel(Number(settingsWarningLevel.value));
+
+	if (settingsCriticalLevel.value === "") {
+		settingsCriticalLevel.value = 50;
+	}
+	settingsBill.setCriticalLevel(Number(settingsCriticalLevel.value));
 }
 settingsUpdate.addEventListener('click', updateSettingsValues);
 
