@@ -15,7 +15,7 @@ nav ul {
 }
 
 nav li {
-	background-color: #ddd;
+	background-color: #fff;
 	box-shadow: 1px 1px, 2px 2px;
 	outline: 1px solid #ccc;
 	border-radius: 5px;
@@ -50,11 +50,12 @@ button:focus:not(:active) {
 	box-shadow: 2px 2px 2px #000;
 }
 
-.add-button,
+.add-button {
+	background-image: linear-gradient(45deg, #cfa, #afc) !important;
+}
+
 .update-button {
-	/* background-image: linear-gradient(45deg, #caf, #fac) !important;
-	color: #fff !important; */
-	text-shadow: none;
+	background-image: linear-gradient(45deg, #acf, #caf) !important;
 }
 
 .reset-button {
@@ -148,7 +149,6 @@ input[type=radio] {
 
 .big {
 	font-size: xx-large;
-	font-weight: bold;
 }
 
 .bold {

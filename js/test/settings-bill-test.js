@@ -197,6 +197,23 @@ describe("bill with settings factory functions", function () {
 			assert.equal("critical", settingsBill.totalClassName());
 		});
 
+		it("should return a class name of 'normal' if total is less than warning and critical levels", function () {
+			let settingsBill = BillWithSettings();
+
+			settingsBill.setCallCost(2.50);
+			settingsBill.setSmsCost(0.85);
+			settingsBill.setWarningLevel(10);
+			settingsBill.setCriticalLevel(15);
+
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.makeCall();
+			settingsBill.sendSms();
+			settingsBill.sendSms();
+
+			assert.equal("normal", settingsBill.totalClassName());
+		});
+
 		it("should stop total call cost from increasing when critical level is reached", function () {
 			let settingsBill = BillWithSettings();
 

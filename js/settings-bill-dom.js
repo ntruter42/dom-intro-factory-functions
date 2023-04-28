@@ -25,7 +25,8 @@ function settingsButtonClicked() {
 		settingsBill.getSmsCost() <= 0 ||
 		settingsBill.getWarningLevel() <= 0 ||
 		settingsBill.getCriticalLevel() <= 0) {
-		alert("Settings can't be 0");
+		alert("Settings are invalid");
+		return;
 	} else if (settingsChecked) {
 		settingsBill.setCheckedValue(settingsChecked.value);
 
@@ -41,6 +42,7 @@ function settingsButtonClicked() {
 		settingsTotal.innerHTML = "R" + settingsBill.getTotalCost().toFixed(2);
 	} else {
 		alert("Nothing selected");
+		return;
 	}
 
 	settingsTotal.classList.remove("warning", "critical", "normal");
@@ -62,25 +64,41 @@ settingsReset.addEventListener('click', resetSettingsTotals);
 
 // UPDATE BUTTON
 function updateSettingsValues() {
+	let errors = [];
+
 	if (settingsCallCost.value === "" || Number(settingsCallCost.value) <= 0) {
-		settingsCallCost.value = settingsBill.getCallCost();
+		// settingsCallCost.value = settingsBill.getCallCost();
+		errors.push("call cost");
 	}
 	settingsBill.setCallCost(Number(settingsCallCost.value));
 
 	if (settingsSmsCost.value === "" || Number(settingsSmsCost.value) <= 0) {
-		settingsSmsCost.value = settingsBill.getSmsCost();
+		// settingsSmsCost.value = settingsBill.getSmsCost();
+		errors.push("sms cost");
 	}
 	settingsBill.setSmsCost(Number(settingsSmsCost.value));
 
 	if (settingsWarningLevel.value === "" || Number(settingsWarningLevel.value) <= 0) {
-		settingsWarningLevel.value = settingsBill.getWarningLevel();
+		// settingsWarningLevel.value = settingsBill.getWarningLevel();
+		errors.push("warning level");
 	}
 	settingsBill.setWarningLevel(Number(settingsWarningLevel.value));
 
 	if (settingsCriticalLevel.value === "" || Number(settingsCriticalLevel.value) <= 0) {
-		settingsCriticalLevel.value = settingsBill.getCriticalLevel();
+		// settingsCriticalLevel.value = settingsBill.getCriticalLevel();
+		errors.push("critical level");
 	}
 	settingsBill.setCriticalLevel(Number(settingsCriticalLevel.value));
+
+	if (errors.length > 0) {
+		let errMsg = errors[0];
+		for (let i = 1; i < errors.length; i++) {
+			errMsg += ', ' + errors[i];
+		}
+		errMsg += " - can't be empty, zero or negative";
+		alert(errMsg.charAt(0).toUpperCase() + errMsg.slice(1));
+		return;
+	}
 
 	settingsTotal.classList.remove("warning", "critical", "normal");
 	settingsTotal.classList.add(settingsBill.totalClassName());

@@ -1,8 +1,8 @@
 function BillWithSettings() {
-	let theCallCost = 2.75;
-	let theSmsCost = 0.75;
-	let theWarningLevel = 30;
-	let theCriticalLevel = 50;
+	let theCallCost = 0;
+	let theSmsCost = 0;
+	let theWarningLevel = 0;
+	let theCriticalLevel = 0;
 
 	let callCostTotal = 0;
 	let smsCostTotal = 0;
