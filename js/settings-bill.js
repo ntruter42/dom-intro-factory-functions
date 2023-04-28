@@ -1,8 +1,8 @@
 function BillWithSettings() {
-	let theCallCost = 0;
-	let theSmsCost = 0;
-	let theWarningLevel = 0;
-	let theCriticalLevel = 0;
+	let theCallCost = 2.75;
+	let theSmsCost = 0.75;
+	let theWarningLevel = 30;
+	let theCriticalLevel = 50;
 
 	let callCostTotal = 0;
 	let smsCostTotal = 0;
@@ -16,7 +16,7 @@ function BillWithSettings() {
 	function getCallCost() {
 		return theCallCost;
 	}
-	
+
 	function setSmsCost(smsCost) {
 		theSmsCost = smsCost;
 	}
@@ -99,6 +99,7 @@ function BillWithSettings() {
 		} else if (hasReachedWarningLevel()) {
 			return "warning";
 		}
+		return "normal";
 	}
 
 	function resetTotals() {

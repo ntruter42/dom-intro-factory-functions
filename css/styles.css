@@ -160,9 +160,14 @@ input[type=radio] {
 	text-shadow: 1px 1px 1px #000;
 }
 
-.danger {
+.critical {
 	color: #d00 !important;
 	text-shadow: 1px 1px 1px #000;
+}
+
+.normal {
+	color: #000 !important;
+	text-shadow: none;
 }
 
 .widget-selected {

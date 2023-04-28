@@ -25,7 +25,7 @@ function settingsButtonClicked() {
 		settingsBill.getSmsCost() <= 0 ||
 		settingsBill.getWarningLevel() <= 0 ||
 		settingsBill.getCriticalLevel() <= 0) {
-		console.log("Settings can't be 0");
+		alert("Settings can't be 0");
 	} else if (settingsChecked) {
 		settingsBill.setCheckedValue(settingsChecked.value);
 
@@ -40,8 +40,11 @@ function settingsButtonClicked() {
 		settingsSmsTotal.innerHTML = "R" + settingsBill.getTotalSmsCost().toFixed(2);
 		settingsTotal.innerHTML = "R" + settingsBill.getTotalCost().toFixed(2);
 	} else {
-		console.log("Nothing selected");
+		alert("Nothing selected");
 	}
+
+	settingsTotal.classList.remove("warning", "critical", "normal");
+	settingsTotal.classList.add(settingsBill.totalClassName());
 }
 settingsButton.addEventListener('click', settingsButtonClicked);
 
@@ -52,6 +55,8 @@ function resetSettingsTotals() {
 	settingsCallTotal.innerHTML = "R" + settingsBill.getTotalCallCost().toFixed(2);
 	settingsSmsTotal.innerHTML = "R" + settingsBill.getTotalSmsCost().toFixed(2);
 	settingsTotal.innerHTML = "R" + settingsBill.getTotalCost().toFixed(2);
+
+	settingsTotal.classList.remove("warning", "critical", "normal");
 }
 settingsReset.addEventListener('click', resetSettingsTotals);
 
@@ -76,6 +81,9 @@ function updateSettingsValues() {
 		settingsCriticalLevel.value = settingsBill.getCriticalLevel();
 	}
 	settingsBill.setCriticalLevel(Number(settingsCriticalLevel.value));
+
+	settingsTotal.classList.remove("warning", "critical", "normal");
+	settingsTotal.classList.add(settingsBill.totalClassName());
 }
 settingsUpdate.addEventListener('click', updateSettingsValues);
 
